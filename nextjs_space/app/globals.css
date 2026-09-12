@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Always-white theme: moonlight silver + Dome-of-the-Rock gold + Green Dome (Masjid an-Nabawi) green */
+    --background: 0 0% 100%;
+    --foreground: 208 22% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 208 22% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 208 22% 20%;
+    --primary: 44 100% 33%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 20% 94%;
+    --secondary-foreground: 208 22% 20%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 210 12% 45%;
+    --accent: 160 82% 24%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 44 100% 33%;
+    --radius: 0.625rem;
+    --radius-sm: calc(0.625rem - 4px);
+    --radius-lg: calc(0.625rem + 4px);
+    --radius-full: 9999px;
+    --shadow-sm: 0 1px 2px 0 rgb(46 58 70 / 0.06);
+    --shadow-md: 0 4px 16px -2px rgb(46 58 70 / 0.10);
+    --shadow-lg: 0 18px 40px -12px rgb(46 58 70 / 0.16);
+  }
+
+  /* Force light even if a .dark class lingers anywhere */
+  .dark {
+    --background: 0 0% 100%;
+    --foreground: 208 22% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 208 22% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 208 22% 20%;
+    --primary: 44 100% 33%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 20% 94%;
+    --secondary-foreground: 208 22% 20%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 210 12% 45%;
+    --accent: 160 82% 24%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 45%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 20% 88%;
+    --input: 214 20% 88%;
+    --ring: 44 100% 33%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html, body {
+    background:#ffffff;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+/* Gold → Green gradient text (Dome of the Rock gold blended with the Green Dome) — readable on white */
+.gold-text {
+  background: linear-gradient(135deg, #A67C00 0%, #0B6E4F 52%, #A67C00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Pure gold text */
+.gold-solid-text {
+  color: #A67C00;
+}
+
+/* Green (Masjid an-Nabawi Green Dome) text */
+.green-text {
+  color: #0B6E4F;
+}
+
+/* Moonlight silver text */
+.moonlight-text {
+  color: #7C8A9B;
+}
+
+/* Soft warm/moonlit glow that reads on white */
+.gold-glow {
+  box-shadow: 0 0 0 1px rgba(166,124,0,0.18), 0 18px 50px -18px rgba(11,110,79,0.28), 0 0 40px rgba(166,124,0,0.10);
+}
+
+/* Platinum/moonlight helper kept for backward compatibility */
+.platinum-text {
+  color: #7C8A9B;
+}
+
+/* Custom scrollbar — light moonlight track, gold thumb */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #EAEEF3;
+}
+::-webkit-scrollbar-thumb {
+  background: #C9A227;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A67C00;
+}
+
+/* Animated counter */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-count {
+  animation: countUp 0.8s ease-out forwards;
+}
+
+/* Moonlight halo pulse for the crescent moon */
+@keyframes moonFloat {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.95; }
+  50% { transform: translateY(-10px) scale(1.02); opacity: 1; }
+}
+.moon-float {
+  animation: moonFloat 9s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.15; transform: scale(0.8); }
+  50% { opacity: 0.9; transform: scale(1.1); }
+}
+.twinkle {
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+@keyframes sunFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.03); }
+}
+.sun-float {
+  animation: sunFloat 11s ease-in-out infinite;
+}
+
+@keyframes sunRays {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.sun-rays {
+  animation: sunRays 90s linear infinite;
+}
+
+@keyframes sunPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.08); }
+}
+.sun-pulse {
+  animation: sunPulse 6s ease-in-out infinite;
+}
+
+/* Tier badges on white cards */
+.tier-millionaire {
+  background: linear-gradient(135deg, #C7D0DB, #EEF2F6);
+  color: #2E3A46;
+}
+.tier-billionaire {
+  background: linear-gradient(135deg, #C9A227, #E3C766);
+  color: #3A2E00;
+}
+.tier-titan {
+  background: linear-gradient(135deg, #0B6E4F, #14926B);
+  color: #FFFFFF;
+  box-shadow: 0 0 18px rgba(11, 110, 79, 0.35);
+}
